@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>ujian</title>
+</head>
+<body>
+<script>
+let jumbu = [];
+let bayar = [];
+let diskon = [];
+let jumlahpembeli = 2;
+
+for (let i = 1; i <= jumlahpembeli;i++) {
+console.log(`====== pembeli ke - ${i} ======`)
+let buku = parseInt(prompt("masukan jumlah buku :"));
+
+let totalbayar = 0;
+let jenisdiskon = "";
+if (buku > 200) {
+ 
+let hargapertama = 100 * 5000 * 0.93;
+let hargakedua = 100 * 5000 * 0.83;
+let hargasisa = (buku - 200) * 5000 * 0.73;
+totalbayar = hargapertama + hargakedua + hargasisa;
+jenisdiskon ="diskon besar"
+} else 
+
+if (buku > 100 && buku <= 200) {
+let hargapertama = 100 * 5000 * 0.95;
+let hargasisa = (buku - 100) * 5000 * 0.85;
+totalbayar = hargapertama + hargasisa;
+jenisdiskon = "diskon kecil"
+} else {
+totalbayar = buku * 5000;
+jenisdiskon = "tidak dapat diskon"
+}
+jumbu.push(buku);
+bayar.push(totalbayar);
+diskon.push(jenisdiskon);
+
+}
+
+
+
+let pendapatan = 0;
+let diskonk = 0;
+let diskonb = 0;
+
+console.log("=======TABLE TRANSAKSI========")
+for (let j = 0; j < bayar.length;j++) {
+pendapatan += bayar[j];
+
+console.log(`pembeli ${j+1} ${jumbu[j]} ${diskon[j]} ${bayar[j].toLocaleString()} `)
+
+if (diskon[j] == "diskon kecil") {
+diskonk++;
+}else if(diskon[j] == "diskon besar") {
+diskonb++;
+}
+}
+let rata = pendapatan / jumlahpembeli;
+console.log(`====== REKAPAN =======`);
+console.log(`pendapatan = Rp${pendapatan.toLocaleString()}`);
+console.log(`rata rata = Rp${rata.toLocaleString()}`);
+console.log(`jumlah diskon kecil : ${diskonk}`);
+console.log(`jumlah diskon besar : ${diskonb}`);
+</script>
+</body>
+</html>
